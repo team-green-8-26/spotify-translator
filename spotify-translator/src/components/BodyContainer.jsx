@@ -5,13 +5,10 @@ import SampleAPIInteractions from './SampleAPIInteractions';
 
 function BodyContainer(){
     return (
-        <>
-            <div className='body-container'>
-                <LyricsContainer language={"hindi"}/>
-                <LyricsContainer language={"english"}/>
-            </div>
-            <SampleAPIInteractions />
-        </>
+        <div className='body-container'>
+            <LyricsContainer language={"hindi"}/>
+            <LyricsContainer language={"english"}/>
+        </div>
     )
 }
 
