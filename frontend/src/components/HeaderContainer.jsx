@@ -4,7 +4,7 @@ import '../assets/css/header-container.css';
 function HeaderContainer(){
     return (
         <div className='header-container'>
-            <h1>Spotify Translator</h1>
+            <h1>Translate Lyrics</h1>
         </div>
     )
 }
