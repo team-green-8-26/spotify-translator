@@ -1,14 +1,27 @@
 import os
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from api.types import Song, Translation
 from api.appmanager import get_song, get_all_songs, get_translation
 import socket
 import uvicorn
-from typing import Dict
+from typing import Dict, List
 
 app = FastAPI()
 port = 6222
+
+origins: List[str] = [
+    "http://192.168.1.216",
+    "http://192.168.1.216:6222",
+    "http://localhost",
+    "http://localhost:6222",
+    "10.4.0.80:59228",
+]
+
+# https://fastapi.tiangolo.com/tutorial/cors/
+app.add_middleware(CORSMiddleware,
+                   allow_origins=origins)
 
 
 """
