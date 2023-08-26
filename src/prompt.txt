@@ -1,0 +1,11 @@
+
+Translate the following song lyrics while preserving the idiomatic expressions and lyrical style:
+
+Original Lyrics:
+<<LYRICS>>
+
+Translate the above lyrics into <<TARGET LANGUAGE>> while ensuring that idioms, metaphors, and poetic elements are accurately conveyed. Maintain the song's rhythm and emotion.
+
+Additional Context:
+This is What the lyrics are directly translated to:
+<<DIRECT TRANSLATION>>

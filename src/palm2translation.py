@@ -1,22 +1,30 @@
 
 import os
+import io
 from decouple import config
 import google.generativeai as palm
 palm.configure(api_key=config("PALM_API_KEY"))
 
 
 
+def open_file(filepath):
+    with open(filepath, 'r', encoding='utf-8') as infile:
+        return infile.read()
 
-def science_tutoring(temperature: float = 0.2) -> None:
 
+def translate_with_palm(lyrics = "Se me hace agua la boca") -> None:
 
-    response = palm.generate_text(prompt="What color is the sky?")
+    #lyrics = "Se me hace agua la boca"
+    prompt = open_file("./prompt.txt").replace('<<LYRICS>>', lyrics).replace('<<TARGET LANGUAGE>>', 'ENGLISH')
+    print(prompt)
+    response = palm.generate_text(prompt=prompt)
     print(f"Response from Model: {response.result}")
 
 
     return response
 
 
+
+
 if __name__ == "__main__":
-    print("??")
-    science_tutoring()
+    translate_with_palm()
