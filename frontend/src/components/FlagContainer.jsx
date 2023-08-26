@@ -4,7 +4,7 @@ import { FaFlag } from 'react-icons/fa';
 
 function FlagContainer(props){
     const [feedback, setFeedback] = useState('');
-    const [showSuggesstionBox, setShowSuggestionBox] = useState(false);
+    const [showSuggestionBox, setShowSuggestionBox] = useState(false);
 
     const submitFeedback = () => {
         console.log(feedback);
@@ -19,8 +19,8 @@ function FlagContainer(props){
     return (
         <div className='flag-container'>
             <div className='feedback-container'>
-                <FaFlag onClick={() => setShowSuggestionBox(!showSuggesstionBox)} />
-                { showSuggesstionBox && 
+                <FaFlag onClick={() => setShowSuggestionBox(!showSuggestionBox)} />
+                { showSuggestionBox && 
                     <>
                         <textarea placeholder="Enter your suggestion" rows="5" cols="30" className='suggestion-box' onChange={(e) => {setFeedback(e.target.value)}}></textarea>
                         <button onClick={submitFeedback} className='submit-feedback-button'>Submit</button>
