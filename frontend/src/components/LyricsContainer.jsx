@@ -8,8 +8,10 @@ function LyricsContainer(props){
     }
 
     const handleLyricClick = (lyric) => {
-        setSelectedSentenceNumber(lyric[2]);
-        props.updateShowFlag(lyric)
+        if (props.updateShowFlag) {
+            setSelectedSentenceNumber(lyric[2]);
+            props.updateShowFlag(lyric)
+        }
     }
 
     return (
