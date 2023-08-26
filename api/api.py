@@ -1,7 +1,8 @@
 import os
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from api.types import Songs
+from api.types import Song, Translation
+from api.appmanager import get_song, get_all_songs, get_translation
 import socket
 import uvicorn
 from typing import Dict
@@ -9,10 +10,6 @@ from typing import Dict
 app = FastAPI()
 port = 6222
 
-
-songs: Dict[str, Songs] = {
-    
-}
 
 """
 FastAPI on a uvicorn server:
@@ -25,7 +22,7 @@ FastAPI on a uvicorn server:
 @app.get("/")
 async def index() -> FileResponse:
     """
-    Summary of the API
+    Summary of the API -- features useful methods for debugging
     """
     webdir = os.path.dirname(__file__)
     index = os.path.join(webdir, '../web/index.html')
@@ -33,22 +30,38 @@ async def index() -> FileResponse:
 
 
 @app.get("/song")
-async def index() -> Dict[str, Dict[str, Songs]]:
+async def index():  # -> Dict[str, Dict[str, Songs]]:
     """
     Return all hardcoded songs in the database
     """
+    print(f"getting all songs")
+    songs = await get_all_songs()
     return {
         "songs": songs
     }
 
 
 @app.get("/song/{id}")
-async def index(id: str) -> Dict[str, Songs]:
+async def index(id: str) -> Dict[str, Song]:
     """
     Return song of specific id
     """
+    print(f"getting song with id {id}")
+    song = await get_song(id)
     return {
-        "song": songs.get(id)
+        "song": song
+    }
+
+
+@app.get("/translate/{id}")
+async def index(id: str) -> Dict[str, Translation]:
+    """
+    Return English translation for song of specified ID
+    """
+    print(f"getting translation for song with id {id}")
+    translation = await get_translation(id)
+    return {
+        "translation": translation
     }
 
 

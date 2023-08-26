@@ -1,7 +1,8 @@
 from pydantic import BaseModel
+from typing import List
 
 
-class Songs(BaseModel):
+class Song(BaseModel):
     song_id: str
     title: str
     artist: str
@@ -9,13 +10,17 @@ class Songs(BaseModel):
     lyrics: str
 
 
-class Languages(BaseModel):
+class Songs(BaseModel):
+    songs: List[Song]
+
+
+class Language(BaseModel):
     language_id: str
     name: str
     code: str
 
 
-class Translations(BaseModel):
+class Translation(BaseModel):
     translation_id: str
     sentence_id: str
     language_id: str
@@ -23,7 +28,7 @@ class Translations(BaseModel):
     flagged: str
 
 
-class Users(BaseModel):
+class User(BaseModel):
     user_id: str
     username: str
     email: str
@@ -31,7 +36,7 @@ class Users(BaseModel):
     created_at: str
 
 
-class Suggestions(BaseModel):
+class Suggestion(BaseModel):
     suggestion_id: str
     sentence_id: str
     suggested_translation: str
@@ -39,7 +44,7 @@ class Suggestions(BaseModel):
     submitted_at: str
 
 
-class Sentences(BaseModel):
+class Sentence(BaseModel):
     sentence_id: str
     song_id: str
     text: str

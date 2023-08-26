@@ -1,8 +1,17 @@
-# god-object that connects all parts of the app together
-
-def song_requested():
-    pass
+import api.dbaccess as db
 
 
-def bad_translation_reported():
-    pass
+async def get_song(id: str):
+    return await db.get_song(id)
+
+
+async def get_all_songs():
+    return await db.get_all_songs()
+
+
+async def get_translation(id: str):
+    return None
+
+
+async def report_bad_translation():
+    return None
