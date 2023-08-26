@@ -18,6 +18,13 @@
     "table": "songs",
     "values": [
       {
+        "song_id": 0,
+        "title": "Song 0",
+        "artist": "Artist 0",
+        "language_id": 1,
+        "lyrics": "This is the lyrics of song 0."
+      },
+      {
         "song_id": 1,
         "title": "Song 1",
         "artist": "Artist 1",
