@@ -25,5 +25,4 @@ async def get_all_songs():
         file = db_file.read()
         data = json.loads(file)  # should be using a real db for efficiency reasons, but this is fine for now
         songs = data[1].get('values')
-    print(songs)
     return songs
