@@ -1,7 +1,7 @@
 .lyrics-container {
-    border: red 1px solid;
-    height: 500px;
-    width: 300px;
+    border: rgb(192, 188, 188) 2px solid;
+    min-height: 800px;
+    width: 500px;
 }
 
 ul {
