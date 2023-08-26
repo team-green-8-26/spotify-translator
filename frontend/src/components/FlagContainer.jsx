@@ -22,7 +22,8 @@ function FlagContainer(props){
                 <FaFlag onClick={() => setShowSuggestionBox(!showSuggestionBox)} />
                 { showSuggestionBox && 
                     <>
-                        <textarea placeholder="Enter your suggestion" rows="5" cols="30" className='suggestion-box' onChange={(e) => {setFeedback(e.target.value)}}></textarea>
+                        <button>Retranslate Verse</button>
+                        <textarea placeholder="Or paste in your translation" rows="5" cols="30" className='suggestion-box' onChange={(e) => {setFeedback(e.target.value)}}></textarea>
                         <button onClick={submitFeedback} className='submit-feedback-button'>Submit</button>
                     </>
                 }
