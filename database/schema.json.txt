@@ -1,0 +1,202 @@
+[
+  {
+    "action": "drop",
+    "table": "suggestions",
+    "if_exists": true
+  },
+  {
+    "action": "drop",
+    "table": "translations",
+    "if_exists": true
+  },
+  {
+    "action": "drop",
+    "table": "users",
+    "if_exists": true
+  },
+  {
+    "action": "drop",
+    "table": "sentences",
+    "if_exists": true
+  },
+  {
+    "action": "drop",
+    "table": "songs",
+    "if_exists": true
+  },
+  {
+    "action": "drop",
+    "table": "languages",
+    "if_exists": true
+  },
+  {
+    "action": "create",
+    "table": "languages",
+    "columns": [
+      {
+        "name": "language_id",
+        "type": "SERIAL",
+        "modifiers": "PRIMARY KEY"
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(50)",
+        "modifiers": "NOT NULL"
+      },
+      {
+        "name": "code",
+        "type": "VARCHAR(2)",
+        "modifiers": "NOT NULL"
+      }
+    ]
+  },
+  {
+    "action": "create",
+    "table": "users",
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "SERIAL",
+        "modifiers": "PRIMARY KEY"
+      },
+      {
+        "name": "username",
+        "type": "VARCHAR(50)",
+        "modifiers": "UNIQUE NOT NULL"
+      },
+      {
+        "name": "email",
+        "type": "VARCHAR(100)",
+        "modifiers": "UNIQUE NOT NULL"
+      },
+      {
+        "name": "password_hash",
+        "type": "VARCHAR(100)",
+        "modifiers": "NOT NULL"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "modifiers": "DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "action": "create",
+    "table": "songs",
+    "columns": [
+      {
+        "name": "song_id",
+        "type": "SERIAL",
+        "modifiers": "PRIMARY KEY"
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(100)",
+        "modifiers": "NOT NULL"
+      },
+      {
+        "name": "artist",
+        "type": "VARCHAR(100)"
+      },
+      {
+        "name": "language_id",
+        "type": "INTEGER",
+        "modifiers": "REFERENCES languages(language_id)"
+      },
+      {
+        "name": "lyrics",
+        "type": "TEXT",
+        "modifiers": "NOT NULL"
+      }
+    ]
+  },
+  {
+    "action": "create",
+    "table": "sentences",
+    "columns": [
+      {
+        "name": "sentence_id",
+        "type": "SERIAL",
+        "modifiers": "PRIMARY KEY"
+      },
+      {
+        "name": "song_id",
+        "type": "INTEGER",
+        "modifiers": "REFERENCES songs(song_id)"
+      },
+      {
+        "name": "text",
+        "type": "TEXT",
+        "modifiers": "NOT NULL"
+      },
+      {
+        "name": "timestamp",
+        "type": "TIMESTAMP",
+        "modifiers": "NOT NULL"
+      }
+    ]
+  },
+  {
+    "action": "create",
+    "table": "translations",
+    "columns": [
+      {
+        "name": "translation_id",
+        "type": "SERIAL",
+        "modifiers": "PRIMARY KEY"
+      },
+      {
+        "name": "sentence_id",
+        "type": "INTEGER",
+        "modifiers": "REFERENCES sentences(sentence_id)"
+      },
+      {
+        "name": "language_id",
+        "type": "INTEGER",
+        "modifiers": "REFERENCES languages(language_id)"
+      },
+      {
+        "name": "translated_text",
+        "type": "TEXT",
+        "modifiers": "NOT NULL"
+      },
+      {
+        "name": "flagged",
+        "type": "BOOLEAN",
+        "modifiers": "DEFAULT FALSE"
+      }
+    ]
+  },
+  {
+    "action": "create",
+    "table": "suggestions",
+    "columns": [
+      {
+        "name": "suggestion_id",
+        "type": "SERIAL",
+        "modifiers": "PRIMARY KEY"
+      },
+      {
+        "name": "sentence_id",
+        "type": "INTEGER",
+        "modifiers": "REFERENCES sentences(sentence_id)"
+      },
+      {
+        "name": "suggested_translation",
+        "type": "TEXT",
+        "modifiers": "NOT NULL"
+      },
+      {
+        "name": "user_id",
+        "type": "INTEGER",
+        "modifiers": "REFERENCES users(user_id)"
+      },
+      {
+        "name": "submitted_at",
+        "type": "TIMESTAMP",
+        "modifiers": "DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  }
+]
