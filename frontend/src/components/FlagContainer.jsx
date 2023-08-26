@@ -8,7 +8,7 @@ function FlagContainer(props){
 
     const submitFeedback = () => {
         if(feedback && feedback != "")
-            alert("Feedback for line "+props.lineNumber+" : "+feedback);
+            alert("Feedback for line "+props.lyric[2]+" : "+feedback);
     }
 
     return (

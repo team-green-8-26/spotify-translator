@@ -3,3 +3,12 @@
     height: 500px;
     width: 300px;
 }
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.highlighted {
+    background-color: yellow;
+}

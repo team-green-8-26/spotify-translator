@@ -2,9 +2,14 @@ import React, {useState, useEffect} from 'react';
 import '../assets/css/lyrics-container.css';
 
 function LyricsContainer(props){
-    const [hover, setHover] = useState(false);
+    const [selectedSentenceNumber, setSelectedSentenceNumber] = useState(false);
     const createLyric = (lyric) => {
-        return <li>{lyric["timestamps"]} {lyric["lines"]}</li>
+        return <li onClick={() => handleLyricClick(lyric)} className={(selectedSentenceNumber == lyric[2])?'highlighted':''}>{lyric[0]} {lyric[1]}</li>
+    }
+
+    const handleLyricClick = (lyric) => {
+        setSelectedSentenceNumber(lyric[2]);
+        props.updateShowFlag(lyric)
     }
 
     return (
@@ -13,24 +18,10 @@ function LyricsContainer(props){
             <ul>
                 {
                     props.lyrics.map((lyric) => {
-                        createLyric(lyric)
+                        return createLyric(lyric)
                     })
-                    
                 }
             </ul>
-            
-            <button
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-            >
-                Hover over me!
-            </button>
-            {hover && (
-                <div>
-                    magic carpet
-                </div>
-            )}
-
         </div>
     )
 }
