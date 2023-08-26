@@ -1,4 +1,4 @@
-from src import api
+from api import api
 
 
 def start():

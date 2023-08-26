@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
+from api.types import Songs
 import socket
 import uvicorn
 from typing import Dict
@@ -10,13 +10,7 @@ app = FastAPI()
 port = 6222
 
 
-class MediaInfo(BaseModel):
-    id: str
-    artist: str
-    songname: str
-
-
-songs: Dict[str, MediaInfo] = {
+songs: Dict[str, Songs] = {
     
 }
 
@@ -29,7 +23,7 @@ FastAPI on a uvicorn server:
 
 
 @app.get("/")
-def index() -> FileResponse:
+async def index() -> FileResponse:
     """
     Summary of the API
     """
@@ -39,7 +33,7 @@ def index() -> FileResponse:
 
 
 @app.get("/song")
-def index() -> Dict[str, Dict[str, MediaInfo]]:
+async def index() -> Dict[str, Dict[str, Songs]]:
     """
     Return all hardcoded songs in the database
     """
@@ -49,7 +43,7 @@ def index() -> Dict[str, Dict[str, MediaInfo]]:
 
 
 @app.get("/song/{id}")
-def index(id: str) -> Dict[str, MediaInfo]:
+async def index(id: str) -> Dict[str, Songs]:
     """
     Return song of specific id
     """
@@ -59,7 +53,7 @@ def index(id: str) -> Dict[str, MediaInfo]:
 
 
 @app.post("/report/{id}")
-def index(artist: str, songname: str) -> Dict[str, str]:
+async def index(artist: str, songname: str) -> Dict[str, str]:
     """
     Report a bad translation
     """
