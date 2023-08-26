@@ -7,8 +7,13 @@ function FlagContainer(props){
     const [showSuggestionBox, setShowSuggestionBox] = useState(false);
 
     const submitFeedback = () => {
-        if(feedback && feedback != "")
+        console.log(feedback);
+        console.log(props.lyric);
+        if(feedback && feedback != "" && props.lyric)
             alert("Feedback for line "+props.lyric[2]+" : "+feedback);
+        else{
+            alert("Please select a lyric and enter a feedback!");
+        }
     }
 
     return (

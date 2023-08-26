@@ -26,3 +26,7 @@
     padding: 3%;
     cursor: pointer;
 }
+
+.feedback-container .submit-feedback-button:hover {
+    background-color: #02219c;
+}

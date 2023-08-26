@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../assets/css/body-container.css';
 import LyricsContainer from './LyricsContainer';
-import PlayerContainer from './PlayerContainer';
 import FlagContainer from './FlagContainer';
 
 const lyrics = [
@@ -11,20 +10,15 @@ const lyrics = [
 ]
 
 function BodyContainer(){
-    const [showFlag, setShowFlag] = useState(false);
     const [selectedLyric, setSelectedLyric] = useState(null);
     const updateShowFlag = (lyric) => {
-        setShowFlag(!showFlag);
         setSelectedLyric(lyric);
     }
     return (
         <div className='body-container'>
-            <PlayerContainer />
-            <LyricsContainer language={"hindi"} lyrics={lyrics}/>
-            <LyricsContainer language={"english"} lyrics={lyrics} updateShowFlag={updateShowFlag}/>
-            { showFlag && 
-                <FlagContainer lyric={selectedLyric}/>
-            }
+            <LyricsContainer language={"Original"} lyrics={lyrics}/>
+            <LyricsContainer language={"English"} lyrics={lyrics} updateShowFlag={updateShowFlag}/>
+            <FlagContainer lyric={selectedLyric}/>
         </div>
     )
 }
