@@ -1,0 +1,32 @@
+.flag-container {
+    display: flex;
+    align-items: top;
+}
+.flag-container .feedback-container {
+    display: flex;
+    flex-direction: column;
+}
+.feedback-container svg {
+    color: red;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+}
+.feedback-container .suggestion-box {
+    margin-top: 3%;
+    resize: none;
+}
+.feedback-container .submit-feedback-button {
+    margin-top: 3%;
+    width: fit-content;
+    background-color: #0173d9;
+    color: white;
+    border-radius: 5%;
+    border: 0;
+    padding: 3%;
+    cursor: pointer;
+}
+
+.feedback-container .submit-feedback-button:hover {
+    background-color: #02219c;
+}

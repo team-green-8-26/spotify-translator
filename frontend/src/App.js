@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import HeaderContainer from './components/HeaderContainer';
+import BodyContainer from './components/BodyContainer';
+import FooterContainer from './components/FooterContainer';
 
 function App() {
   return (
     <div className="App">
-      <h1>Spotify Translator</h1>
+      <HeaderContainer />
+      <BodyContainer />
+      <FooterContainer />
     </div>
   );
 }
